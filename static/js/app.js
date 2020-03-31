@@ -42,6 +42,7 @@ function updatePlots() {
 
     var databox = d3.select(".panel-body");
 
+    databox.html("");
     databox.selectAll("html")
      .data(md)
      .enter()
