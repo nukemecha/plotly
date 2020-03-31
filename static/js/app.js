@@ -39,8 +39,10 @@ function updatePlots() {
  
  
     // data box
-    d3.select(".panel-body")
-     .selectAll("html")
+
+    var databox = d3.select(".panel-body");
+
+    databox.selectAll("html")
      .data(md)
      .enter()
      .append("html")
@@ -74,10 +76,20 @@ function updatePlots() {
         text: sliced_otu_labels,
         orientation: 'h'
     }];
+
+    var bar_layout = {
+        title: 'Top 10 OTUs',
+        xaxis: {
+            title: 'Sample Values'
+        },
+        yaxis: {
+            title: 'OTU IDs'
+        }
+    };
     
     //plot it
 
-    Plotly.newPlot('bar', bar_data);
+    Plotly.newPlot('bar', bar_data, bar_layout);
 
 
     /*********** Bubble chart *****************/
@@ -93,7 +105,17 @@ function updatePlots() {
         }
     }];
 
-    Plotly.newPlot('bubble', bubble_data);
+    var bubble_layout = {
+        title: 'Sample Value per OTU',
+        xaxis: {
+            title: 'OTU IDs'
+        },
+        yaxis: {
+            title: 'Sample Values'
+        }
+    };
+
+    Plotly.newPlot('bubble', bubble_data, bubble_layout);
 
    
 
